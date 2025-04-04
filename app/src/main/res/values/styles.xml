@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text" parent="TextAppearance.AppCompat">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Ubuntu">
+        <item name="android:fontFamily">@font/ubuntu</item>
+
+    </style>
+
+    <style name="Text.UbuntuBold">
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
+    </style>
+
+    <style name="Text.UbuntuBold.H1">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="Text.UbuntuBold.H2">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="Text.UbuntuBold.H2.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Text.UbuntuBold.H3">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="Text.UbuntuBold.H3.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Text.UbuntuBold.H4">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Text.Ubuntu.Body">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Text.Ubuntu.Body2">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.UbuntuBold.Body">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Text.Ubuntu.Body.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="InputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="hintEnabled">false</item>
+        <item name="boxCornerRadiusTopStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">16dp</item>
+        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusBottomEnd">16dp</item>
+        <item name="errorEnabled">true</item>
+        <item name="errorIconDrawable">@null</item>
+    </style>
+
+    <style name="InputLayout.Password">
+        <item name="passwordToggleEnabled">true</item>
+        <item name="passwordToggleTint">@color/black_main</item>
+    </style>
+
+    <style name="InputEditText">
+        <item name="android:textAppearance">@style/Text.Ubuntu.Body</item>
+        <item name="android:textColorHint">@color/black_main</item>
+        <item name="android:textColor">@color/black_main</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+</resources>
