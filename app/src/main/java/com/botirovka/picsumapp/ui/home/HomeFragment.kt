@@ -32,16 +32,17 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(savedInstanceState != null){
-            showNoInternetDialog()
-            viewModel.clearBitmaps()
-        }
         adapter = ImageAdapter(
             requireContext(),
             viewModel.imageList,
             ::onItemImageClick,
             ::onShareClick
         )
+
+        if(savedInstanceState != null){
+            showNoInternetDialog()
+            viewModel.clearBitmaps()
+        }
 
         setupObservers()
         setupListeners()
