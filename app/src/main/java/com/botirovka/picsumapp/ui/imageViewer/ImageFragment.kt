@@ -14,7 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.botirovka.picsumapp.databinding.FragmentImageBinding
-import com.botirovka.picsumapp.utils.Extenstions.onShareClick
+import com.botirovka.picsumapp.utils.Extenstions.shareImageLink
 import com.botirovka.picsumapp.utils.ScreenUtils
 
 class ImageFragment : Fragment() {
@@ -96,7 +96,7 @@ class ImageFragment : Fragment() {
         }
 
         binding.toolbar.ivShareImageLink.setOnClickListener {
-            viewModel.imageBitmap.value?.let { onShareClick(it) }
+            viewModel.imageBitmap.value?.let { shareImageLink(it) }
         }
     }
 

@@ -1,50 +1,70 @@
 package com.botirovka.picsumapp.ui.home
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.botirovka.picsumapp.databinding.ItemImageBinding
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import com.botirovka.picsumapp.R
 import com.botirovka.picsumapp.domain.models.ImageBitmap
 
 
-class ImageAdapter(private val onItemClick: (ImageBitmap) -> Unit,
-                   private val onShareClick: (ImageBitmap) -> Unit)
-    : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
+class ImageAdapter(
+    context: Context,
+    private val images: List<ImageBitmap>,
+    private val onItemClick: (ImageBitmap) -> Unit,
+    private val onShareClick: (ImageBitmap) -> Unit)
+    : ArrayAdapter<ImageBitmap>(context, 0  , images) {
 
-    private var imageList: List<ImageBitmap> = emptyList()
+    private class ViewHolder {
+        lateinit var ivImage: ImageView
+        lateinit var tvImageId: TextView
+        lateinit var btnShare: ImageView
+    }
 
-    class ImageViewHolder(val binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(image: ImageBitmap) {
-                binding.ivMore.visibility = View.VISIBLE
-                binding.ivImage.setImageBitmap(image.bitmap)
-                binding.tvImageId.text = "Id: ${image.id}"
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+
+        val view: View
+        val holder: ViewHolder
+
+        if (convertView == null) {
+            Log.d("mydebug", "getView: create new view ")
+            view = LayoutInflater.from(context).inflate(R.layout.item_image, parent, false)
+            holder = ViewHolder()
+            holder.ivImage = view.findViewById(R.id.ivImage)
+            holder.tvImageId = view.findViewById(R.id.tvImageId)
+            holder.btnShare = view.findViewById(R.id.ivShareImageLink)
+            view.tag = holder
+        } else {
+            Log.d("mydebug", "getView: using convertView ")
+            view = convertView
+            holder = view.tag as ViewHolder
         }
-    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        val binding = ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ImageViewHolder(binding)
-    }
+        val itemImage = images[position]
 
-    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        val binding = holder.binding
-        val imageItem = imageList[position]
-        holder.bind(imageItem)
-        holder.itemView.setOnClickListener {
-            onItemClick(imageItem)
+        holder.ivImage.setImageBitmap(itemImage.bitmap)
+
+        holder.tvImageId.text = "ID ${itemImage.id}"
+
+        holder.ivImage.setOnClickListener {
+            onItemClick(itemImage)
         }
-        binding.ivMore.setOnClickListener {
-            onShareClick(imageItem)
+
+        holder.btnShare.setOnClickListener {
+            onShareClick(itemImage)
         }
+
+        return view
     }
 
-    override fun getItemCount(): Int {
-        return imageList.size
+    override fun getItemId(position: Int): Long {
+        return images[position].id.toLong()
     }
-
-    fun submitList(newItems: List<ImageBitmap>) {
-        imageList = newItems
-        notifyDataSetChanged()
+    override fun hasStableIds(): Boolean {
+        return true
     }
 }

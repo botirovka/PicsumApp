@@ -15,11 +15,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:text="Id:0"
+        tools:text="Id:0"
         android:layout_gravity="start|top"/>
 
     <ImageView
-        android:id="@+id/ivMore"
+        android:id="@+id/ivShareImageLink"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="end"

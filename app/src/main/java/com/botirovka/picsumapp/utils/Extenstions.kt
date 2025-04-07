@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import com.botirovka.picsumapp.domain.models.ImageBitmap
 
 object Extenstions {
-    fun Fragment.onShareClick(imageBitmap: ImageBitmap) {
+    fun Fragment.shareImageLink(imageBitmap: ImageBitmap) {
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, "Image from PicsumApp:\n ${imageBitmap.url}")

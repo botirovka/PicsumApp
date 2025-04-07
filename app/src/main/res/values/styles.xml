@@ -51,6 +51,11 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="Text.UbuntuBold.Body.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
     <style name="Text.Ubuntu.Body.White">
         <item name="android:textColor">@color/white</item>
     </style>

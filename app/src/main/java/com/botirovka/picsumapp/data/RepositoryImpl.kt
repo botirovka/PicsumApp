@@ -14,7 +14,9 @@ object RepositoryImpl: Repository{
 
 
     override suspend fun fetchImageBitmap(imageId: Int): ImageBitmap? {
+        Log.d("mydebug", "loadImages: FETCH")
         return imageCache[imageId] ?: try {
+            Log.d("mydebug", "loadImages: FETCH TRY")
             val url = URL("$baseUrl/id/$imageId/$screenWidth")
             val connection = url.openConnection()
             connection.connect()
